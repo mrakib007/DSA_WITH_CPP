@@ -8,7 +8,8 @@ int main(){
     //     if(n%i==0) cout << i << " ";
     // }
 
-    for(int i=1; i<=sqrt(n); i++){
+    //instead of sqrt() function it's good to use i*i as the function is in built in c++ it will take more time.
+    for(int i=1; i*i<=n; i++){
         if(n%i==0){
             vec.push_back(i);
             if(n/i != i) vec.push_back(n/i);
