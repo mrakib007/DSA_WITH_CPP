@@ -41,5 +41,5 @@ int main(){
     return 0;
 }
 
-// Time Complexity: O(n1 + n2)
+// Time Complexity: O(n1 + n2).
 // Space Complexity: O(n1 + n2) for returning the answer. not using in the algorithm.
