@@ -20,9 +20,15 @@ int maximumSubarraySum(vector<int>arr){
 int maximumSubArrayUsingKadane(vector<int>& nums){
     int sum=0;
     int maxSum=INT_MIN;
-    for(auto it:nums){
-        sum=sum+it;
-        maxSum=max(maxSum,sum);
+    int start = 0,temp_start=0,end=0;
+    for(int i=0;i<nums.size();i++){
+        if(sum==0) temp_start=i;
+        sum=sum+nums[i];
+        if(sum>maxSum){
+            maxSum=sum;
+            start=temp_start;
+            end=i;
+        }
         if(sum<0) sum=0;
     }
     return maxSum;
