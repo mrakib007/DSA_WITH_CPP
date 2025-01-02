@@ -1,5 +1,27 @@
 #include<bits/stdc++.h>
 using namespace std;
+//This better solution will have O(nlogn) time complexity and O(1) space complexity
+int longestSubsequenceBetterSolution(vector<int>& arr){
+    int n=arr.size();
+    if(n==0) return 0;
+    sort(arr.begin(),arr.end());
+    int longest=1;
+    int count=0;
+    int previous=INT_MIN;
+    for(int i=0;i<n;i++){
+        if(arr[i]==previous){
+            continue;
+        }else if(arr[i]-1==previous){
+            count++;
+            previous=arr[i];
+        }else if(arr[i]-1!=previous){
+            count=1;
+            previous=arr[i];
+        }
+        longest=max(longest,count);
+    }
+    return longest;
+}
 int longestSubsequence(vector<int>& arr){
     int n=arr.size();
     if (n == 0) return 0;
