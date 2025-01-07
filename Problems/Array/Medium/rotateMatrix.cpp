@@ -1,5 +1,18 @@
 #include<bits/stdc++.h>
 using namespace std;
+//Optimized Approach. Time Complexity: O(n*m), Space Complexity: O(1)
+vector<vector<int>> rotateMatrixOptimized(vector<vector<int>>&nums,int n,int m){
+    int n=nums.size();
+    for(int i=0;i<n-1;i++){
+        for(int j=i+1;j<n;j++){
+            swap(nums[i][j],nums[j][i]);
+        }
+    }
+    for(int i=0;i<n,i++){
+        reverse(nums[i].begin(),nums[i].end());
+    }
+    return nums;
+}
 //Brute Force Approach. Time Complexity: O(n*m), Space Complexity: O(n*m)
 void rotateMatrixBrute(vector<vector<int>>&nums,int n,int m){
     vector<vector<int>> answer(m, vector<int>(n));
