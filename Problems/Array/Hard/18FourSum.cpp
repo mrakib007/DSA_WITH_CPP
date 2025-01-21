@@ -1,5 +1,29 @@
 #include<bits/stdc++.h>
 using namespace std;
+//Better Approach. Time complexity is O(n^3) and space complexity is O(N) + O(number of quadruplets).
+//O(N) is the space complexity of the inner hashSet and O(number of quadruplets) is the space complexity of the set.
+ vector<vector<int>> fourSumBetter(vector<int>& nums, int target) {
+        int n=nums.size();
+        set<vector<int>>st;
+        for(int i=0;i<n;i++){
+            for(int j=i+1;j<n;j++){
+                set<long long> hashSet;
+                for(int k=j+1;k<n;k++){
+                    long long sum=nums[i]+nums[j];
+                    sum=sum+nums[k];
+                    long long last=target-sum;
+                    if(hashSet.find(last)!=hashSet.end()){
+                        vector<int>temp={nums[i],nums[j],nums[k],(int)last};
+                        sort(temp.begin(),temp.end());
+                        st.insert(temp);
+                    }
+                    hashSet.insert(nums[k]);
+                }
+            }
+        }
+        vector<vector<int>>answer(st.begin(),st.end());
+        return answer;
+    }
 vector<vector<int>> fourSumBrute(vector<int>& nums, int target) {
     int n=nums.size();
     set<vector<int>>st;
