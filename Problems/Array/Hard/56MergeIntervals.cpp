@@ -1,5 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
+//Brute force approach is nlogn+2n. Space complexity is O(n)
 vector<vector<int>>mergeIntervalsBrute(vector<vector<int>>&intervals,int n){
     sort(intervals.begin(),intervals.end());
     vector<vector<int>>ans;
