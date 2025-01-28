@@ -1,5 +1,18 @@
 #include<bits/stdc++.h>
 using namespace std;
+//Optimized approach is O(nlogn)+O(n) and space complexity is O(n)
+vector<vector<int>>mergeIntervalsOptimized(vector<vector<int>>&intervals, int n){
+    sort(intervals.begin(),intervals.end());
+    vector<vector<int>>ans;
+    for(int i=0;i<n;i++){
+        if(ans.empty()||intervals[i][0]>ans.back()[1]){
+            ans.push_back(intervals[i]);
+        }else{
+            ans.back()[1]=max(ans.back()[1],intervals[i][1]);
+        }
+    }
+    return ans;
+}
 //Brute force approach is nlogn+2n. Space complexity is O(n)
 vector<vector<int>>mergeIntervalsBrute(vector<vector<int>>&intervals,int n){
     sort(intervals.begin(),intervals.end());
