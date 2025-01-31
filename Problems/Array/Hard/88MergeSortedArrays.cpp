@@ -1,7 +1,20 @@
-#include<iostream>
-#include<vector>
+#include<bits/stdc++.h>
 using namespace std;
-
+//Optimized approach. Time complexity is O(min(n,m))+O(nlogn)+O(mlogm) and space complexity is O(1)
+void mergeSortArrayOptimized(vector<int>& nums1, int n, vector<int>& nums2, int m) {
+    int left=n-1;
+    int right=0;
+    while(left>=0 && right<m){
+        if(nums1[left]>nums2[right]){
+            swap(nums1[left],nums2[right]);
+            left--;right++;
+        }else{
+            break;
+        }
+        sort(nums1.begin(),nums1.end());
+        sort(nums2.begin(),nums2.end());
+    }
+}
 //Brute force approach. Time complexity is O(n+m) and space complexity is O(n+m)
 void mergeSortArrayBrute(vector<int>& nums1, int m, vector<int>& nums2, int n) {
     vector<int> arr3(m + n);
