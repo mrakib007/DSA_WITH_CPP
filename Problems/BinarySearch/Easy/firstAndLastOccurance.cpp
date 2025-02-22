@@ -1,5 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
+//Time complexity is O(logn), Space complexity is O(1)
+//Here overflow can occur if n is very large. So, we can use mid=low+(high-low)/2, or use long long int for mid
 int findLowerBound(vector<int>&arr,int n,int x){
     int low=0,high=n-1;
     int index=n;
