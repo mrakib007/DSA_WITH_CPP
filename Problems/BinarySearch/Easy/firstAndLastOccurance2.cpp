@@ -26,6 +26,11 @@ int findLastElement(vector<int>arr,int n,int x){
 }
 vector<int> findFirstAndLastElement(vector<int>arr,int n,int x){
     int first=findFirstElement(arr,n,x);
+
+    //If in the question it is asked to find the number of occurances of x in the array.
+    // if(first==-1) return 0;
+    // int last=findLastElement(arr,n,x);
+    // return last-first+1;
     if(first==-1) return {-1,-1};
     int last=findLastElement(arr,n,x);
     return {first,last};
