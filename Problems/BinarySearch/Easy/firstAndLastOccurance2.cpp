@@ -1,5 +1,8 @@
 #include<bits/stdc++.h>
 using namespace std;
+//Time complexity=O(logn)
+//Space complexity=O(1)
+//This is the optimized approach to find the first and last occurance of an element in the array.
 int findFirstElement(vector<int>arr,int n,int x){
     int low=0,high=n-1,first=-1;
     while(low<=high){
