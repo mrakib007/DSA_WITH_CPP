@@ -1,6 +1,8 @@
 #include<bits/stdc++.h>
 using namespace std;
 //Time complexity=O(logn), Space complexity=O(1)
+//This is the optimized approach to search an element in the rotated array.
+//For determining mid, at times it can cause out of bound error if n is very large. So, we can use mid=low+(high-low)/2, or use long long int for mid
 bool searchInRotatedArray(vector<int> arr,int n,int target){
     int low=0,high=n-1;
     while(low<=high){
