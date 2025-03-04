@@ -14,6 +14,8 @@ int findNthRootBrute(int n,int m){
     for(int i=1;i<=n;i++){
         if(findPower(i,n)==m){
             return i;
+        }else if(findPower(i,n)>m){
+            break;
         }
     }
     return -1;
