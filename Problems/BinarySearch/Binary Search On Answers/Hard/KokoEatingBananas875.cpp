@@ -1,9 +1,11 @@
 #include<bits/stdc++.h>
 using namespace std;
+//Brute force approach
+//Time complexity is O(max(arr)*n), Space complexity is O(1)
 int calculateTime(vector<int> arr,int hourly){
     int totalHours=0;
     for(int i=0;i<arr.size();i++){
-        totalHours+=ceil(arr[i]/hourly);
+        totalHours+=ceil((double)arr[i]/hourly);
     }
     return totalHours;
 }
