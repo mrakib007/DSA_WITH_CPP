@@ -1,6 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
-int possibleOrNot(vector<int>&arr,int day,int m,int k){
+char possibleOrNot(vector<int>&arr,int day,int m,int k){
     int count=0,numOfBouquets=0;
     for(int i=0;i<arr.size();i++){
         if(arr[i]<=day){
@@ -13,6 +13,22 @@ int possibleOrNot(vector<int>&arr,int day,int m,int k){
     numOfBouquets+=count/k;
     if(numOfBouquets>=m) return 'T';
     else return 'F';
+}
+//Optimized approach
+//Time Complexity : O(log(max-min)), space complexity : O(1)
+int minDaysOptimized(vector<int>&arr,int m,int k){
+    int low = *min_element(arr.begin(), arr.end());
+    int high = *max_element(arr.begin(), arr.end());
+    if(arr.size()<1LL*m*k) return -1;
+    while(low<=high){
+        int mid=(low+high)/2;
+        if(possibleOrNot(arr,mid,m,k)=='T'){
+            high=mid-1;
+        }else{
+            low=mid+1;
+        }
+    }
+    return low;
 }
 //Brute force approach
 //Time Complexity : O(max-min+1)*N, space complexity : O(1)
