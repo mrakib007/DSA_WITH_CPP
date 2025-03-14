@@ -1,5 +1,8 @@
 #include<bits/stdc++.h>
 using namespace std;
+//Brute force approach
+//Time Complexity : O(n).
+//Space Complexity : O(1).
 int findKthMissingNumBrute(vector<int>&arr,int n,int k){
     for(int i=0;i<n;i++){
         if(arr[i]<=k) k++;
