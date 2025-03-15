@@ -8,8 +8,7 @@ bool canPlace(vector<int>&stalls,int n,int dist,int cows){
             lastCow=stalls[i];
         }
     }
-    if(countCows>=cows) return true;
-    return false;
+    return countCows>=cows;
 }
 int findMinDistanceBrute(vector<int>&stalls,int n,int c){
     int maximum=*max_element(stalls.begin(),stalls.end());
@@ -18,6 +17,7 @@ int findMinDistanceBrute(vector<int>&stalls,int n,int c){
         if(canPlace(stalls,n,i,c)) continue; //i is the distance between two cows, c is the number of cows.
         else return i-1;
     }
+    return maximum-minimum;
 }
 int main(){
     int n,c;
