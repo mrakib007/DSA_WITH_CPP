@@ -13,6 +13,23 @@ int maxPages(vector<int> pages,int n,int pageNum){
     }
     return student;
 }
+//Optimized approach using binary search
+//Time complexity : O(nlog(sum-max+1))
+//Space complexity : O(1)
+int findPageOptimized(vector<int>pages,int n,int k){
+    if(n<k) return -1;
+    int low=*max_element(pages.begin(),pages.end()),high=accumulate(pages.begin(),pages.end(),0);
+    while(low<=high){
+        int mid=low+(high-low)/2;
+        int countStudent=maxPages(pages,n,mid);
+        if(countStudent>k){
+            low=mid+1;
+        }else{
+            high=mid-1;
+        }
+    }
+    return low;
+}
 //Brute force solution
 //Time complexity : O(sum-max+1)*n
 //Space complexity : O(1)
