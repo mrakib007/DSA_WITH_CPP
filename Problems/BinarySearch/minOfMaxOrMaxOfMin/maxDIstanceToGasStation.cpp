@@ -1,7 +1,8 @@
 #include<bits/stdc++.h>
 using namespace std;
+//Brute force approach
+//Time Complexity : O(k*n)+O(n), Space Complexity : O(n)
 int maxDistanceBrute(vector<int>arr,int n,int k){
-    int n=arr.size();
     vector<int>howMany(n-1,0);
     for(int gasStations=1;gasStations<=k;gasStations++){
         int maxSection=-1;
