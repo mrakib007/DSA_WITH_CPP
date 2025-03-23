@@ -1,5 +1,24 @@
 #include<bits/stdc++.h>
 using namespace std;
+//Better approach using priority queue
+//Time Complexity : O(nlogn)+O(klogn), Space Complexity : O(n-1)
+long double maxDistanceBetter(vector<int>arr,int n,int k){
+    vector<int>howMany(n-1,0);
+    priority_queue<pair<long double,int>>pq;
+    for(int i=0;i<n-1;i++){
+        pq.push({arr[i+1]-arr[i],i});
+    }
+    for(int gasStations=1;gasStations<=k;gasStations++){
+        auto top=pq.top();
+        pq.pop();
+        int sectionIndex=top.second;
+        howMany[sectionIndex]++;
+        long double initialDifference=arr[sectionIndex+1]-arr[sectionIndex];
+        long double newDifference=initialDifference/(long double)(howMany[sectionIndex]+1);
+        pq.push({newDifference,sectionIndex});
+    }
+    return pq.top().first;
+}
 //Brute force approach
 //Time Complexity : O(k*n)+O(n), Space Complexity : O(n)
 int maxDistanceBrute(vector<int>arr,int n,int k){
