@@ -1,5 +1,36 @@
 #include<bits/stdc++.h>
 using namespace std;
+//This needs multiple revision. Concepts are not clear yet.
+int numberOfGasStationRequired(long double dist,vector<int>&arr){
+    int count=0;
+    for(int i=1;i<arr.size();i++){
+        int numberInBetween=((arr[i]-arr[i-1])/dist);
+        if((arr[i]-arr[i-1])/dist == numberInBetween*dist){
+            numberInBetween--;
+        }
+        count+=numberInBetween;
+    }
+    return count;
+}
+long double minimizeMaxDistance(vector<int>&arr,int k){
+    int n=arr.size();
+    long double low=0;
+    long double high=0;
+    for(int i=0;i<n-1;i++){
+        high=max(high,(long double)(arr[i+1]-arr[i]));
+    }
+    long double diff=1e-6;
+    while(high-low>diff){
+        long double mid=(low+high)/(2.0);
+        int count=numberOfGasStationRequired(mid,arr);
+        if(count>k){
+            low=mid;
+        }else{
+            high=mid;
+        }
+    }
+    return high;
+}
 //Better approach using priority queue
 //Time Complexity : O(nlogn)+O(klogn), Space Complexity : O(n-1)
 long double maxDistanceBetter(vector<int>arr,int n,int k){
