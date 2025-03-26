@@ -1,5 +1,8 @@
 #include<bits/stdc++.h>
 using namespace std;
+//Better solution
+//Time complexity : O(n1+n2);
+//Space complexity : O(1);
 double findMedianSortedArraysBetter(vector<int>& nums1, vector<int>& nums2) {
     int n1=nums1.size();
     int n2=nums2.size();
